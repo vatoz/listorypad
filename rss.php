@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: text/xml; charset=UTF-8");
 ?>
-<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0"  xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" >
 <channel>
 <title>Listorypad</title>
 <language>cs</language>
@@ -13,12 +13,15 @@ header("Content-Type: text/xml; charset=UTF-8");
 <itunes:category text="Performing Arts"/>
 <image href="https://listorypad.eu/static/logo.png"/>
 <itunes:image href="https://listorypad.eu/static/logo.png"/>
+<googleplay:image href="https://listorypad.eu/static/logo.png"/>
 <itunes:keywords>Listorypad, storytelling</itunes:keywords>
 <itunes:author>Listorypad.eu a jednotliví autoři</itunes:author>
+<googleplay:author>Listorypad.eu a jednotliví autoři</googleplay:author>
 <itunes:explicit>No</itunes:explicit>
 <itunes:owner>
 <itunes:email>vasek@vasekcerny.cz</itunes:email>
 </itunes:owner>
+<googleplay:owner>vasek@vasekcerny.cz</googleplay:owner>
 <?php
 function xmlescape($str){
   return str_replace( array('"',"'","<",">","&"),
@@ -36,7 +39,7 @@ foreach($posts as $pid=>$post){
   echo '<itunes:summary>'.$d.'</itunes:summary>';
   echo '<itunes:duration>'.$post['duration'].'</itunes:duration>';
   echo '<pubDate>'.$post['date'].'</pubDate>';
-  echo '<enclosure url="https://listorypad.eu/'.$post['url'].'" type="audio/mpeg" length="33912640"/>';
+  echo '<enclosure url="https://listorypad.eu/'.$post['url'].'" type="audio/mpeg" length="'.$post['filesize'].'"/>';
   echo '<guid isPermaLink="false">https:/listorypad.eu/#'.$post['url'].'</guid>';
   echo '<link>https:/listorypad.eu/#'.$post['url'].'</link>';
   echo '</item>'."\n" ;
