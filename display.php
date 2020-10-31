@@ -41,7 +41,8 @@ header("Content-type: text/html");
             if($post['author']==$uid){
               echo '<a/ name="'.$post['url'].'">';
               echo htmlentities($post['name'])."<br>";
-              echo '<audio controls preload="none"><source src="'.$post['url'].'" type="audio/mpeg"></audio>';
+              echo '<audio controls preload="none"><source src="'.$post['url'].'" type="'.$post['mimetype'].'"></audio>';
+
               unset ($posts[$pid]);
               continue;
             }

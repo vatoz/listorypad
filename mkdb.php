@@ -7,7 +7,8 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS editorials (
                 moment TEXT,
                 duration TEXT,
                 filesize INTEGER
-                url text
+                url text,
+                mimetype TEXT
               )");
 
 $pdo->exec("CREATE TABLE IF NOT EXISTS posts (
@@ -17,8 +18,9 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS posts (
                 topic INTEGER,
                 moment TEXT,
                 duration TEXT,
-                filesize INTEGER
-                url text
+                filesize INTEGER,
+                url text,
+                mimetype TEXT
               )");
 
   $pdo->exec("CREATE TABLE IF NOT EXISTS topics (
