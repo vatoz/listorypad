@@ -15,6 +15,13 @@ header("Content-type: text/html");
 
   <center><h1>Listorypad</h1></center>
   <center><p>Performeři v rámci výzvy každý den vypráví nový příběh na zadané téma. Poslechnout si je můžeš tady na stránkách, nebo v rámci <a href="/rss">podcastu</a>. </p></center>
+  <center>
+  <?php
+  foreach(getEditorials() as $editorial){
+    echo '<p>'.$editorial["transcript"]. " <small><i>(".$editorial["date"].")</i></small> </p>";
+  }
+
+  ?></ul></center>
   <center><table><tr><td>&nbsp;</td><?php
     $users=getActiveUsers();
     foreach($users as $user){

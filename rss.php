@@ -27,23 +27,53 @@ function xmlescape($str){
   return str_replace( array('"',"'","<",">","&"),
   array("&quot;","&apos;","&lt;","&gt;","&amp;"),$str);
 }
+function Render($Title,$Description,$Duration,$Date, $Url,$Filesize,$Author){
+  echo '<item>';
+  echo '<title>'.xmlescape($Title).'</title>';
+  $d=xmlescape($Description);
+  echo '<description>'.$d.'</description>';
+  echo '<itunes:subtitle>'.$d.'</itunes:subtitle>';
+  echo '<itunes:summary>'.$d.'</itunes:summary>';
+
+  echo '<itunes:duration>'.$Duration.'</itunes:duration>';
+  echo '<pubDate>'.$Date.'</pubDate>';
+  echo '<enclosure url="https://listorypad.eu/'.$Url.'" type="audio/mpeg" length="'.$Filesize.'"/>';
+  echo '<guid isPermaLink="false">https:/listorypad.eu/#'.$Url.'</guid>';
+  echo '<link>https:/listorypad.eu/#'.$Url.'</link>';
+  echo '<author>'.xmlescape($Author).'</author>';
+  echo '</item>'."\n" ;
+
+}
+
+
 $posts=getPosts();
 $users=getActiveUsers();
 $topics=getTopics();
 foreach($posts as $pid=>$post){
-  echo '<item>';
-  echo '<title>'.xmlescape($post["name"]). ' ('.$users[$post['author']]['name']. ' vypráví na téma '.$topics[$post['topic']].')</title>';
-  $d=xmlescape($users[$post['author']]['name']." vypráví v rámci listorypadu na téma ".$topics[$post['topic']]);
-  echo '<description>'.$d.'</description>';
-  echo '<itunes:subtitle>'.$d.'</itunes:subtitle>';
-  echo '<itunes:summary>'.$d.'</itunes:summary>';
-  echo '<itunes:duration>'.$post['duration'].'</itunes:duration>';
-  echo '<pubDate>'.$post['date'].'</pubDate>';
-  echo '<enclosure url="https://listorypad.eu/'.$post['url'].'" type="audio/mpeg" length="'.$post['filesize'].'"/>';
-  echo '<guid isPermaLink="false">https:/listorypad.eu/#'.$post['url'].'</guid>';
-  echo '<link>https:/listorypad.eu/#'.$post['url'].'</link>';
-  echo '</item>'."\n" ;
+  Render(
+    $post["name"]. ' ('.$users[$post['author']]['name']. ' vypráví na téma '.$topics[$post['topic']].')',
+    $users[$post['author']]['name']." vypráví v rámci listorypadu na téma ".$topics[$post['topic']],
+    $post['duration'],
+    $post['date'],
+    $post['url'],
+    $post['filesize'],
+    $users[$post['author']]['name']
+  );
 }
+foreach(getEditorials() as $post){
+  Render(
+  "Editorial - ".$post["name"],
+  $post['transcription'],
+  $post['duration'],
+  $post['date'],
+  $post['url'],
+  $post['filesize'],
+  "listorypad.eu"
+);
+
+}
+
+
 ?>
 </channel>
 </rss>
