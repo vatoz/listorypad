@@ -1,12 +1,12 @@
-#copyright{ position:absolute; bottom:0px; }
+
 @font-face {
   font-family: "Myfnt";
   src: url("myFont.woff");
-  src: url('fonts/font.eot');
-  src: url('fonts/font.eot?#iefix') format('embedded-opentype'),
-         url('fonts/font.woff2') format('woff2'),
-         url('fonts/font.woff') format('woff'),
-         url('fonts/cfont.ttf') format('truetype');
-         //  url('fonts/cicle_fina-webfont.svg#ciclefina') format('svg');
+  src: url('/fonts/font.eot');
+  src: url('/fonts/font.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/font.woff2') format('woff2'),
+         url('/fonts/font.woff') format('woff'),
+         url('/fonts/cfont.ttf') format('truetype');
+         //  url('/fonts/cicle_fina-webfont.svg#ciclefina') format('svg');
 }
-h1{font-family:"Myfnt"; }
+h1{font-family:"Myfnt"; font-size:80px;}

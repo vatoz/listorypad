@@ -63,7 +63,7 @@ foreach($posts as $pid=>$post){
 foreach(getEditorials() as $post){
   Render(
   "Editorial - ".$post["name"],
-  $post['transcription'],
+  $post['transcript'],
   $post['duration'],
   $post['date'],
   $post['url'],

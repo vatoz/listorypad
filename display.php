@@ -18,7 +18,7 @@ header("Content-type: text/html");
   <center>
   <?php
   foreach(getEditorials() as $editorial){
-    echo '<p>'.$editorial["transcript"]. " <small><i>(".$editorial["date"].")</i></small> </p>";
+    echo '<p>'.$editorial["transcript"]. " <small><i>(".$editorial["moment"].")</i></small> </p>";
   }
 
   ?></ul></center>

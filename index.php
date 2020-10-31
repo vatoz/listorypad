@@ -2,6 +2,7 @@
 //*****************
 //*Main router    *
 //*****************
+include "setup.php";
 include "db.php";
 if(!isset($_GET["url"])){
   $_GET["url"]="";
