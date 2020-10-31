@@ -65,8 +65,8 @@ foreach(getEditorials() as $post){
   Render(
   "Editorial - ".$post["name"],
   $post['transcript'],
+  $post['duration'],
   $post['moment'],
-  $post['date'],
   $post['url'],
   $post['filesize'],
   "listorypad.eu",
