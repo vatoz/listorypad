@@ -14,3 +14,10 @@ h2{font-family:"Myfnt"; }
 
 tr:nth-child(even) {background: rgb(253,253,253);}
 td{padding:10px 10px 10px 10px; }
+
+img.user {
+  width:100px;
+  clip-path: circle(49px at center);
+  /* OLD VALUE example: circle(245px, 140px, 50px); */
+  /* Yep, even the new clip-path has deprecated stuff. */
+}

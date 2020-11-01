@@ -32,7 +32,7 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS posts (
     $pdo->exec("CREATE TABLE IF NOT EXISTS users (
                     id INTEGER PRIMARY KEY,
                     name TEXT,
-                    mail TEXT,
-                    image TEXT,
+                    mail TEXT,                    
                     password TEXT
                   )");
+//insert into users('name','mail','image','password') values ('Václav Černý','vasek@vasekcerny.cz','media/user/vasek.jpg','$2y$10$DWhCHXfnC2cah9ozX.ssGuMVxDdTp12jy0DTEi0Zs9.50rzjiCteir');
