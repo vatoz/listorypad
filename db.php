@@ -17,21 +17,36 @@ function getActiveUsers(){
 */
 function getUser($User,$Password){
   //$k= getActiveUsers();  foreach($k as $u){    return $u;  }
-  $sql = 'SELECT * FROM users WHERE password=:p';
-
+  $sql = 'SELECT * FROM users WHERE name=:u';
+  //$sql = 'SELECT * FROM users WHERE id=:p';
   global $pdo;
   $stmt = $pdo->prepare($sql);
-//  $stmt->bindValue(':u', $User);
+  $stmt->bindValue(':u', $User,\PDO::PARAM_STR);
   //$stmt->bindValue();
-  $result=$stmt->execute([':p'=>$Password]);
-  //error_log("qqq".var_export($result,true));
+  //$result=$stmt->execute([':p'=>$Password]);
+  $result=$stmt->execute();
+  //error_log($Password . "  qqq".var_export($result,true));
   if($result==false) return false;
 
   while($row=  $stmt->fetch(\PDO::FETCH_ASSOC)){
-    return $row;
+   if($row['password']==''){
+     $sql="update users set password=:p where id=:i";
+     $stmt = $pdo->prepare($sql);
+     $stmt->bindValue(':p', password_hash($Password,PASSWORD_DEFAULT),\PDO::PARAM_STR);
+     $stmt->bindValue(':i', $row['id'],\PDO::PARAM_STR);
+     if ($$stmt->execute()) return $row;
+     echo "Chyba při ukládání. Pardon.";
+     die();
+
+   }
+
+    if(password_verify($Password,$row['password']))  return $row;
   }
+  error_log("no data");
 
 }
+
+
 
 /*
 /*Vrátí témata.
@@ -39,7 +54,8 @@ function getUser($User,$Password){
 */
 function getTopics($Active=true){
   global $pdo;
-  $result = $pdo->query("SELECT id,name FROM topics " .($Active?"where since_when < datetime('now') ":""));
+  echo date("Y-m-d H:m:s");
+  $result = $pdo->query("SELECT id,name FROM topics " .($Active?"where since_when <  '".date("Y-m-d H:m:s")."'":""));
   $ret=array();
   foreach($result as $row){
     $ret[$row['id']]= $row['name'];
