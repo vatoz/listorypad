@@ -27,7 +27,7 @@ header("Content-type: text/html");
   <center><table><tr><td>&nbsp;</td><?php
     $users=getActiveUsers();
     foreach($users as $user){
-      echo '<td><img class="user" src="media/'.f2($user['id']).'/face.jpg"><br>'.htmlspecialchars($user["name"] ).'</td>';
+      echo '<td><!--<img class="user" src="media/'.f2($user['id']).'/face.jpg">--><br>'.htmlspecialchars($user["name"] ).'</td>';
     }
    ?></tr>
 <?php
@@ -43,8 +43,8 @@ header("Content-type: text/html");
               echo '<audio controls preload="none"><source src="'.$post['url'].'" type="'.$post['mimetype'].'"></audio>';
               continue 1;
 
+            }
           }
-        }
 
         echo "</td>";
     }

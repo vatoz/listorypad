@@ -33,8 +33,8 @@ function getUser($User,$Password){
      $sql="update users set password=:p where id=:i";
      $stmt = $pdo->prepare($sql);
      $stmt->bindValue(':p', password_hash($Password,PASSWORD_DEFAULT),\PDO::PARAM_STR);
-     $stmt->bindValue(':i', $row['id'],\PDO::PARAM_STR);
-     if ($$stmt->execute()) return $row;
+     $stmt->bindValue(':i', $row['id'],\PDO::PARAM_INT);
+     if ($stmt->execute()) return $row;
      echo "Chyba při ukládání. Pardon.";
      die();
 
@@ -54,7 +54,7 @@ function getUser($User,$Password){
 */
 function getTopics($Active=true){
   global $pdo;
-  
+
   $result = $pdo->query("SELECT id,name FROM topics " .($Active?"where since_when <  '".date("Y-m-d H:m:s")."'":""));
   $ret=array();
   foreach($result as $row){
