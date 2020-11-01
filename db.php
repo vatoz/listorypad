@@ -89,5 +89,6 @@ function  getEditorials(){
 */
 function getPosts($User=0){
   global $pdo;
-  return $pdo->query('SELECT * FROM posts '.($User>0 ?" WHERE author= ".$User:"").' ORDER BY topic ASC');
+  $ret= $pdo->query('SELECT * FROM posts '.($User>0 ?" WHERE author= ".$User:"").' ORDER BY topic ASC');
+  return $ret->fetchAll();
 }
