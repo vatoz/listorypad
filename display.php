@@ -56,6 +56,6 @@ header("Content-type: text/html");
 
 
 
-<div id=copyright> (c) 2020 jednotliví autoři</div>
+<div id=copyright> (c) 2020 jednotliví autoři | <a href="https://github.com/vatoz/listorypad">zdrojáky aplikace</a> </div>
 </body>
 <html>
