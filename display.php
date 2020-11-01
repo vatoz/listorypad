@@ -22,6 +22,8 @@ header("Content-type: text/html");
   }
 
   ?></ul></center>
+<!--<ol><li> pasti</li><li> ateista</li><li> symbolika</li><li>nebojím</li><li> střela</li><li> informace</li><li> váhy</li><li> spoluvina</li><li> světlo</li><li> oni</li><li> pravda</li><li> všichni</li><li> cokoliv</li><li> nepřátelé</li><li> polopravda</li><li> pýcha</li><li> tygr</li><li> přeživší</li><li> nepotřebuji</li><li> kontrola</li><li> vtip</li><li> dnešek</li><li> čtyři</li><li> nové</li><li> zneužití</li><li> mezery</li><li> vůle</li><li> vítězství</li><li> billboardy</li><li> cesta</li></ol> -->
+
   <center><table><tr><td>&nbsp;</td><?php
     $users=getActiveUsers();
     foreach($users as $user){
@@ -31,22 +33,19 @@ header("Content-type: text/html");
 <?php
   $posts=getPosts();
   foreach(getTopics() as $tid=> $topic){
-    echo "\n<tr>\n<td><h2>".$topic."</h2></td>";
+    echo "\n<tr>\n<td><h2 id=t_".$tid.">".$tid.". ".$topic."</h2></td>";
     foreach ($users as $uid=>$user){
         echo "\n<td>";
           foreach($posts as $pid=>$post){
-            if($tid!==$post['topic']){
-              continue;
-            }
-            if($post['author']==$uid){
-              echo '<a/ name="'.$post['url'].'">';
+            if($post['author']==$uid && $tid==$post['topic']){
+              echo '<a name="'.$post['url'].'"/>';
               echo htmlentities($post['name'])."<br>";
               echo '<audio controls preload="none"><source src="'.$post['url'].'" type="'.$post['mimetype'].'"></audio>';
+              continue 1;
 
-              unset ($posts[$pid]);
-              continue;
-            }
           }
+        }
+
         echo "</td>";
     }
     echo "</tr>\n";

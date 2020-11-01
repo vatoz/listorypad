@@ -10,3 +10,7 @@
          //  url('/fonts/cicle_fina-webfont.svg#ciclefina') format('svg');
 }
 h1{font-family:"Myfnt"; font-size:80px;}
+h2{font-family:"Myfnt"; }
+
+tr:nth-child(even) {background: rgb(253,253,253);}
+td{padding:10px 10px 10px 10px; }
