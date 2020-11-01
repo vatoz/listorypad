@@ -54,7 +54,7 @@ function getUser($User,$Password){
 */
 function getTopics($Active=true){
   global $pdo;
-  echo date("Y-m-d H:m:s");
+  
   $result = $pdo->query("SELECT id,name FROM topics " .($Active?"where since_when <  '".date("Y-m-d H:m:s")."'":""));
   $ret=array();
   foreach($result as $row){

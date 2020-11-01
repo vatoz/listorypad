@@ -8,11 +8,17 @@ if(!isset($_GET["url"])){
   $_GET["url"]="";
 }
 
-
 switch ($_GET["url"]){
   case "rss":
-    include "rss.php";
+    require "rss.php";
+    die();
     break;
+  case "user":
+    require "admin.php";
+    die();
+    break;
+
   default:
-    include "display.php";
+    require "display.php";
+    die();
 }
