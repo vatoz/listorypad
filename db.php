@@ -47,6 +47,24 @@ function getUser($User,$Password){
 }
 
 
+function dbAddPost($User,$Topic,$Name,$Url,$Mimetype,$Duration, $Size){
+  $sql="insert into posts(author,topic,name,url,mimetype,moment,duration, filesize) values(:a,:t,:n,:u,:m,:dt, :du,:f) ";
+  global $pdo;
+  $stmt = $pdo->prepare($sql);
+  $stmt->bindValue(':n',$Name,\PDO::PARAM_STR);
+  $stmt->bindValue(':u',$Url,\PDO::PARAM_STR);
+  $stmt->bindValue(':m',$Mimetype,\PDO::PARAM_STR);
+  $stmt->bindValue(':du',$Duration,\PDO::PARAM_STR);
+
+  $stmt->bindValue(':dt',date("Y-m-d H:m:s"),\PDO::PARAM_STR);
+
+  $stmt->bindValue(':a', $User,\PDO::PARAM_INT);
+  $stmt->bindValue(':t', $Topic,\PDO::PARAM_INT);
+  $stmt->bindValue(':f', $Size,\PDO::PARAM_INT);
+  return $stmt->execute();
+
+}
+
 
 /*
 /*Vrátí témata.
@@ -54,7 +72,6 @@ function getUser($User,$Password){
 */
 function getTopics($Active=true){
   global $pdo;
-
   $result = $pdo->query("SELECT id,name FROM topics " .($Active?"where since_when <  '".date("Y-m-d H:m:s")."'":""));
   $ret=array();
   foreach($result as $row){
