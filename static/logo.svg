@@ -8,62 +8,62 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="3000"
-   height="3000"
-   viewBox="0 0 793.74998 793.75002"
-   version="1.1"
-   id="svg8"
-   inkscape:version="1.0rc1 (09960d6f05, 2020-04-09)"
-   sodipodi:docname="logo.svg"
-   inkscape:export-filename=".\logo.png"
+   inkscape:export-ydpi="96"
    inkscape:export-xdpi="96"
-   inkscape:export-ydpi="96">
+   inkscape:export-filename=".\logo.png"
+   sodipodi:docname="logo.svg"
+   inkscape:version="1.0rc1 (09960d6f05, 2020-04-09)"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 793.74998 793.75002"
+   height="3000"
+   width="3000">
   <defs
      id="defs2">
     <linearGradient
-       inkscape:collect="always"
-       id="linearGradient887">
+       id="linearGradient887"
+       inkscape:collect="always">
       <stop
-         style="stop-color:#ff2a2a;stop-opacity:1;"
+         id="stop883"
          offset="0"
-         id="stop883" />
+         style="stop-color:#ff2a2a;stop-opacity:1;" />
       <stop
-         style="stop-color:#ff2a2a;stop-opacity:0;"
+         id="stop885"
          offset="1"
-         id="stop885" />
+         style="stop-color:#ff2a2a;stop-opacity:0;" />
     </linearGradient>
     <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient887"
-       id="radialGradient891"
-       cx="396.62796"
-       cy="398.76614"
-       fx="396.62796"
-       fy="398.76614"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.5897829,0,0,1.581355,-201.66929,-200.83061)"
        r="403.32495"
-       gradientTransform="matrix(1,0,0,0.99469868,0,2.1139854)"
-       gradientUnits="userSpaceOnUse" />
+       fy="398.76614"
+       fx="396.62796"
+       cy="398.76614"
+       cx="396.62796"
+       id="radialGradient891"
+       xlink:href="#linearGradient887"
+       inkscape:collect="always" />
   </defs>
   <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="0.24748738"
-     inkscape:cx="1274.8815"
-     inkscape:cy="1425.2497"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     inkscape:document-rotation="0"
-     showgrid="false"
-     units="px"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="1912"
+     inkscape:window-maximized="1"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-x="1912"
+     inkscape:window-height="1017"
+     inkscape:window-width="1920"
+     units="px"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="1768.9661"
+     inkscape:cx="3254.8923"
+     inkscape:zoom="0.175"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -77,49 +77,44 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Vrstva 1"
+     id="layer1"
      inkscape:groupmode="layer"
-     id="layer1">
+     inkscape:label="Vrstva 1">
     <rect
-       style="opacity:0.77;fill:url(#radialGradient891);fill-opacity:1;stroke:#000000;stroke-width:0.470126"
+       y="-84.464653"
+       x="-61.786133"
+       height="1003.5007"
+       width="1089.6793"
+       id="rect869"
+       style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:0.969016" />
+    <rect
+       y="-207.666"
+       x="-211.94231"
+       height="1274.8523"
+       width="1281.6508"
        id="rect881"
-       width="806.17975"
-       height="801.90344"
-       x="-6.4619031"
-       y="-2.1855922" />
+       style="opacity:1;fill:url(#radialGradient891);fill-opacity:1;stroke:#000000;stroke-width:0.747398;" />
     <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:36.1411px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.903531"
-       x="-491.03543"
-       y="611.07031"
+       transform="rotate(-45)"
        id="text835"
-       transform="rotate(-45)"><tspan
-         sodipodi:role="line"
-         id="tspan833"
-         x="-491.03543"
-         y="611.07031"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:173.477px;font-family:'Konga Pro';-inkscape-font-specification:'Konga Pro';stroke-width:0.903531">LISTORYPAD</tspan></text>
-    <text
-       id="text835-1"
-       y="227.22797"
-       x="20.628994"
-       style="font-style:normal;font-weight:normal;font-size:63.9406px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.59852"
+       y="335.70938"
+       x="-0.61967009"
+       style="font-style:normal;font-weight:normal;font-size:58.0874px;line-height:0.95;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.45219"
        xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:306.915px;font-family:'Konga Pro';-inkscape-font-specification:'Konga Pro';stroke-width:1.59852"
-         y="227.22797"
-         x="20.628994"
-         id="tspan833-2"
-         sodipodi:role="line">20</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:63.9405px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.59852"
-       x="417.84238"
-       y="771.1131"
-       id="text835-1-7"><tspan
-         sodipodi:role="line"
-         id="tspan833-2-2"
-         x="417.84238"
-         y="771.1131"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:306.914px;font-family:'Konga Pro';-inkscape-font-specification:'Konga Pro';stroke-width:1.59852">20</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:278.819px;font-family:'Konga Pro';-inkscape-font-specification:'Konga Pro';text-align:center;text-anchor:middle;stroke-width:1.45219"
+         y="335.70938"
+         x="-0.61967009"
+         id="tspan833"
+         sodipodi:role="line">LI</tspan><tspan
+         id="tspan851"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:278.819px;font-family:'Konga Pro';-inkscape-font-specification:'Konga Pro';text-align:center;text-anchor:middle;stroke-width:1.45219"
+         y="600.5874"
+         x="-0.61968535"
+         sodipodi:role="line">STORY</tspan><tspan
+         id="tspan853"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:278.819px;font-family:'Konga Pro';-inkscape-font-specification:'Konga Pro';text-align:center;text-anchor:middle;stroke-width:1.45219"
+         y="865.46545"
+         x="-0.61968535"
+         sodipodi:role="line">PAD</tspan></text>
   </g>
 </svg>
