@@ -34,9 +34,11 @@ function Render($Title,$Description,$Duration,$Date, $Url,$Filesize,$Author, $Mi
   echo '<description>'.$d.'</description>';
   echo '<itunes:subtitle>'.$d.'</itunes:subtitle>';
   echo '<itunes:summary>'.$d.'</itunes:summary>';
-
   echo '<itunes:duration>'.$Duration.'</itunes:duration>';
-  echo '<pubDate>'.$Date.'</pubDate>';
+  echo '<pubDate>';
+  $k=new DateTime($Date);
+  echo $k->format(DateTime::RFC822);
+  echo '</pubDate>';
   echo '<enclosure url="https://listorypad.eu/'.$Url.'" type="'.$Mimetype.'" length="'.$Filesize.'"/>';
   echo '<guid isPermaLink="false">https:/listorypad.eu/#'.$Url.'</guid>';
   echo '<link>https:/listorypad.eu/#'.$Url.'</link>';
