@@ -77,14 +77,13 @@ function doAdd(){
       die ("To už v db mám.");
     }
   }
-  var_export($_FILES);
   if(!is_uploaded_file($_FILES['audio']['tmp_name'])) die("Jako vážně, tohle by se nemělo stát. ".$_FILES['audio']['tmp_name']);
   if($_FILES['audio']["size"]>8000000) die("Tenhle soubor už mi přijde moc velký");
   $extenze=strtolower( substr($_FILES["audio"]["name"], -3 ));
   switch ($extenze) {
-      case "mp3":$mimetype="media/mpeg"; break;
-      case "aac":$mimetype="media/aac"; break;
-      case "m4a":$mimetype="media/mp4"; break;
+      case "mp3":$mimetype="audio/mpeg"; break;
+      case "aac":$mimetype="audio/aac"; break;
+      case "m4a":$mimetype="audio/mp4"; break;
       default:die("Tuhle příponu souboru ještě neznám: ".$extenze);
   }
   $filename="media/".f2(loggedUser())."/".f2(intval($_REQUEST['topic'])).".".$extenze;

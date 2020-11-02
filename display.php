@@ -14,7 +14,7 @@ header("Content-type: text/html");
 <body>
 
   <center><h1>Listorypad</h1></center>
-  <center><p>Performeři v rámci výzvy každý den vypráví nový příběh na zadané téma. Poslechnout si je můžeš tady na stránkách, nebo v rámci <a href="/rss">podcastu</a>. </p></center>
+  <center><p>Performeři v rámci výzvy každý den vypráví nový příběh na zadané téma. Poslechnout si je můžeš tady na stránkách, nebo v rámci <a href="/rss">podcastu</a> či <a href="https://open.spotify.com/show/7wCAQtwvArHuVPekQYqqRT">Spotify</a>. </p></center>
   <center>
   <?php
   foreach(getEditorials() as $editorial){
@@ -27,7 +27,7 @@ header("Content-type: text/html");
   <center><table><tr><td>&nbsp;</td><?php
     $users=getActiveUsers();
     foreach($users as $user){
-      echo '<td><!--<img class="user" src="media/'.f2($user['id']).'/face.jpg">--><br>'.htmlspecialchars($user["name"] ).'</td>';
+      echo '<td><!--<img class="user" src="/media/'.f2($user['id']).'/face.jpg">--><br>'.htmlspecialchars($user["name"] ).'</td>';
     }
    ?></tr>
 <?php
@@ -40,7 +40,7 @@ header("Content-type: text/html");
             if($post['author']==$uid && $tid==$post['topic']){
               echo '<a name="'.$post['url'].'"/>';
               echo htmlentities($post['name'])."<br>";
-              echo '<audio controls preload="none"><source src="'.$post['url'].'" type="'.$post['mimetype'].'"></audio>';
+              echo '<audio controls preload="none"><source src="/'.$post['url'].'" type="'.$post['mimetype'].'"></audio>';
               continue 1;
 
             }
