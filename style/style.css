@@ -21,3 +21,5 @@ img.user {
   /* OLD VALUE example: circle(245px, 140px, 50px); */
   /* Yep, even the new clip-path has deprecated stuff. */
 }
+
+audio{max-width:200px;}
