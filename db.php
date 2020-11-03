@@ -1,11 +1,10 @@
 <?php
 /*
-*Varací všechny uživatele
-*@todo vrátit jen aktivní, a vymyslet pořadí
+*Vrací všechny uživatele
 */
 function getActiveUsers(){
   global $pdo;
-  $result = $pdo->query('SELECT * FROM users');
+  $result = $pdo->query("SELECT * FROM users where password <>'' ");
   $ret=array();
   foreach($result as $row){
     $ret[$row['id']]= $row;
