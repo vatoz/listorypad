@@ -27,7 +27,7 @@ function xmlescape($str){
   return str_replace( array('"',"'","<",">","&"),
   array("&quot;","&apos;","&lt;","&gt;","&amp;"),$str);
 }
-function Render($Title,$Description,$Duration,$Date, $Url,$Filesize,$Author, $Mimetype){
+function Render($Title,$Description,$Duration,$Date, $Url,$Filesize,$Author, $Mimetype, $Keywords=""){
   echo '<item>';
   echo '<title>'.xmlescape($Title).'</title>';
   $d=xmlescape($Description);
@@ -43,6 +43,9 @@ function Render($Title,$Description,$Duration,$Date, $Url,$Filesize,$Author, $Mi
   echo '<guid isPermaLink="false">https:/listorypad.eu/#'.$Url.'</guid>';
   echo '<link>https:/listorypad.eu/#'.$Url.'</link>';
   echo '<author>'.xmlescape($Author).'</author>';
+  if(strlen($Keywords)){
+      echo '<itunes:keywords>'.$Keywords.'</itunes:keywords>';
+  }
   echo '</item>'."\n" ;
 
 }
@@ -53,14 +56,15 @@ $users=getActiveUsers();
 $topics=getTopics();
 foreach($posts as $pid=>$post){
   Render(
-    $post["name"]. ' ('.$users[$post['author']]['name']. ' vypráví na téma '.$topics[$post['topic']].')',
-    $users[$post['author']]['name']." vypráví v rámci listorypadu na téma ".$topics[$post['topic']],
+    $post["name"],
+    $users[$post['author']]['name']." vypráví v rámci Listorypadu na téma ".$topics[$post['topic']],
     $post['duration'],
     $post['moment'],
     $post['url'],
     $post['filesize'],
     $users[$post['author']]['name'],
-    $post['mimetype']
+    $post['mimetype'],
+    "Listorypad, storytelling, vyprávění, ". $topics[$post['topic']]. (strpos($post["name"]," ")==false?", ".$post["name"]:"")
   );
 }
 foreach(getEditorials() as $post){
@@ -72,7 +76,8 @@ foreach(getEditorials() as $post){
   $post['url'],
   $post['filesize'],
   "listorypad.eu",
-  $post['mimetype']
+  $post['mimetype'],
+  ""
 );
 
 }
