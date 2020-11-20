@@ -1,8 +1,8 @@
 
 @font-face {
   font-family: "Myfnt";
-  src: 
-         url('/fonts/cfont.ttf') format('truetype');
+  src:
+         url('/fonts/font.ttf') format('truetype');
 
 }
 h1{font-family:"Myfnt"; font-size:80px;}
