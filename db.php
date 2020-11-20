@@ -4,7 +4,9 @@
 */
 function getActiveUsers(){
   global $pdo;
-  $result = $pdo->query("SELECT * FROM users where password <>'' ");
+  $result = $pdo->query("select users.* from users left join (select author, count(*) cn  from posts group by author) aa on users.id=aa.author
+where cn>0
+order by cn desc");
   $ret=array();
   foreach($result as $row){
     $ret[$row['id']]= $row;
