@@ -1,18 +1,19 @@
 <?php
 /*
-*Vrací všechny uživatele
+*Vrací všechny uživatele co se
 */
-function getActiveUsers(){
+function getUsers($Event=0){
   global $pdo;
-  $result = $pdo->query("select users.* from users left join (select author, count(*) cn  from posts group by author) aa on users.id=aa.author
+  $result = $pdo->query("select users.* from users " .($Event?"left join (select author,count(*) cn  from posts where event=".$Event." group by author  ) aa on users.id=aa.author
 where cn>0
-order by cn desc");
+order by cn desc":""));
   $ret=array();
   foreach($result as $row){
     $ret[$row['id']]= $row;
   }
   return $ret;
 }
+
 /*
 /*Vrátí uživatele
 */
@@ -48,8 +49,8 @@ function getUser($User,$Password){
 }
 
 
-function dbAddPost($User,$Topic,$Name,$Url,$Mimetype,$Duration, $Size){
-  $sql="insert into posts(author,topic,name,url,mimetype,moment,duration, filesize) values(:a,:t,:n,:u,:m,:dt, :du,:f) ";
+function dbAddPost($User,$Topic,$Name,$Url,$Mimetype,$Duration, $Size,$Event){
+  $sql="insert into posts(author,topic,name,url,mimetype,moment,duration, filesize,event) values(:a,:t,:n,:u,:m,:dt, :du,:f,:eve) ";
   global $pdo;
   $stmt = $pdo->prepare($sql);
   $stmt->bindValue(':n',$Name,\PDO::PARAM_STR);
@@ -62,6 +63,7 @@ function dbAddPost($User,$Topic,$Name,$Url,$Mimetype,$Duration, $Size){
   $stmt->bindValue(':a', $User,\PDO::PARAM_INT);
   $stmt->bindValue(':t', $Topic,\PDO::PARAM_INT);
   $stmt->bindValue(':f', $Size,\PDO::PARAM_INT);
+  $stmt->bindValue(':eve', $Event,\PDO::PARAM_INT);
   return $stmt->execute();
 
 }
@@ -71,15 +73,26 @@ function dbAddPost($User,$Topic,$Name,$Url,$Mimetype,$Duration, $Size){
 /*Vrátí témata.
 *@param Active Ve výchozím stavu jen ty už aktivní
 */
-function getTopics($Active=true){
+function getTopics($Active=true,$Event=0){
   global $pdo;
-  $result = $pdo->query("SELECT id,name FROM topics " .($Active?"where since_when <  '".date("Y-m-d H:m:s")."'":""));
+  $result = $pdo->query("SELECT id,name FROM topics WHERE (1=1) " .($Active? " AND since_when <  '".date("Y-m-d H:m:s")."'":"")." ".($Event?" AND event=".$Event:""). " ORDER by id DESC ");
   $ret=array();
   foreach($result as $row){
     $ret[$row['id']]= $row['name'];
   }
   return $ret;
 }
+
+function getEvents(){
+  global $pdo;
+  $result = $pdo->query("SELECT * FROM events ORDER BY id DESC");
+  $ret=array();
+  foreach($result as $row){
+    $ret[$row['id']]= $row;
+  }
+  return $ret;
+}
+
 
 function f2($t){
   $k=''.$t;

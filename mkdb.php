@@ -13,6 +13,7 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS editorials (
 
 $pdo->exec("CREATE TABLE IF NOT EXISTS posts (
                 id INTEGER PRIMARY KEY,
+                event INTEGER,
                 name TEXT,
                 author INTEGER,
                 topic INTEGER,
@@ -25,14 +26,22 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS posts (
 
   $pdo->exec("CREATE TABLE IF NOT EXISTS topics (
       id INTEGER PRIMARY KEY,
+      event INTEGER
       name TEXT,
       since_when DATETIME
     )");
 
+    $pdo->exec("CREATE TABLE IF NOT EXISTS events (
+        id INTEGER PRIMARY KEY,
+        name TEXT,
+        description TEXT
+      )");
+
+
     $pdo->exec("CREATE TABLE IF NOT EXISTS users (
                     id INTEGER PRIMARY KEY,
                     name TEXT,
-                    mail TEXT,                    
+                    mail TEXT,
                     password TEXT
                   )");
 //insert into users('name','mail','image','password') values ('Václav Černý','vasek@vasekcerny.cz','media/user/vasek.jpg','$2y$10$DWhCHXfnC2cah9ozX.ssGuMVxDdTp12jy0DTEi0Zs9.50rzjiCteir');

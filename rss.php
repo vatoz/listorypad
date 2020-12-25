@@ -5,11 +5,11 @@ header("Content-Type: text/xml; charset=UTF-8");
 <channel>
 <title>Listorypad</title>
 <language>cs</language>
-<copyright>Jednotliví autoři 2020</copyright>
+<copyright>Jednotliví autoři 2020-2021</copyright>
 <link>https://listorypad.eu</link>
 <ttl>3600</ttl>
-<description>Řada tvůrců každý den bere nové téma, novou výzvu. A pak vypráví příběh.</description>
-<itunes:summary>Řada tvůrců každý den bere nové téma, novou výzvu. A pak vypráví příběh.</itunes:summary>
+<description>Řada tvůrců každý den či týden bere nové téma, novou výzvu. A pak vypráví příběh.</description>
+<itunes:summary>Řada tvůrců každý den či týden bere nové téma, novou výzvu. A pak vypráví příběh.</itunes:summary>
 <itunes:category text="Performing Arts"/>
 <image href="https://listorypad.eu/static/logo.png"/>
 <itunes:image href="https://listorypad.eu/static/logo.png"/>
@@ -28,36 +28,38 @@ function xmlescape($str){
   array("&quot;","&apos;","&lt;","&gt;","&amp;"),$str);
 }
 function Render($Title,$Description,$Duration,$Date, $Url,$Filesize,$Author, $Mimetype, $Keywords=""){
-  echo '<item>';
-  echo '<title>'.xmlescape($Title).'</title>';
+
+  echo '<item>'."\n";
+  echo '<title>'.xmlescape($Title).'</title>'."\n";
   $d=xmlescape($Description);
-  echo '<description>'.$d.'</description>';
-  echo '<itunes:subtitle>'.$d.'</itunes:subtitle>';
-  echo '<itunes:summary>'.$d.'</itunes:summary>';
-  echo '<itunes:duration>'.$Duration.'</itunes:duration>';
+  echo '<description>'.$d.'</description>'."\n";
+  echo '<itunes:subtitle>'.$d.'</itunes:subtitle>'."\n";
+  echo '<itunes:summary>'.$d.'</itunes:summary>'."\n";
+  echo '<itunes:duration>'.$Duration.'</itunes:duration>'."\n";
   echo '<pubDate>';
   $k=new DateTime($Date);
   echo $k->format(DateTime::RFC822);
-  echo '</pubDate>';
-  echo '<enclosure url="https://listorypad.eu/'.$Url.'" type="'.$Mimetype.'" length="'.$Filesize.'"/>';
-  echo '<guid isPermaLink="false">https:/listorypad.eu/#'.$Url.'</guid>';
-  echo '<link>https:/listorypad.eu/#'.$Url.'</link>';
-  echo '<author>'.xmlescape($Author).'</author>';
+  echo '</pubDate>'."\n";
+  echo '<enclosure url="https://listorypad.eu/'.$Url.'" type="'.$Mimetype.'" length="'.$Filesize.'"/>'."\n";
+  echo '<guid isPermaLink="false">https:/listorypad.eu/#'.$Url.'</guid>'."\n";
+  echo '<link>https:/listorypad.eu/#'.$Url.'</link>'."\n";
+  echo '<author>'.xmlescape($Author).'</author>'."\n";
   if(strlen($Keywords)){
-      echo '<itunes:keywords>'.$Keywords.'</itunes:keywords>';
+      echo '<itunes:keywords>'.$Keywords.'</itunes:keywords>'."\n";
   }
-  echo '</item>'."\n" ;
+  echo '</item>'."\n"."\n" ;
 
 }
 
 
 $posts=getPosts();
-$users=getActiveUsers();
+$users=getUsers();
+$events=getEvents();
 $topics=getTopics();
 foreach($posts as $pid=>$post){
   Render(
     $post["name"],
-    $users[$post['author']]['name']." vypráví v rámci Listorypadu na téma ".$topics[$post['topic']],
+    $users[$post['author']]['name']." vypráví v rámci akce ".$events[$post["event"]]["name"]   ." na téma ".$topics[$post['topic']],
     $post['duration'],
     $post['moment'],
     $post['url'],

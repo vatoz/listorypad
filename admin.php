@@ -66,11 +66,13 @@ function doAdd(){
   if(!isset($_REQUEST['duration']))die("Chyba..");
   if(!isset($_REQUEST['topic']))die("Chyba...");
   if(!isset($_REQUEST['name']))die("Chyba....");
+  if(!isset($_REQUEST['event']))die("Chyba.....");
   if(!loggedUser())die ("To nedává smysl");
   if(!isset($_FILES['audio'])) die("Takhle to nefunguje");
   if($_FILES['audio']['error']) die("Chyba nahrávání souboru ".$_FILES['audio']['error']);
   $posts=getPosts(loggedUser());
   $topics=getTopics();
+  $events=getEvents();
   if(!isset($topics[intval($_REQUEST['topic'])]))die("Tohle téma ještě není otevřené");
   foreach($posts as $post){
     if($post['topic']==intval($_REQUEST['topic'])){
@@ -98,7 +100,8 @@ function doAdd(){
     $filename,
     $mimetype,
     trim($_REQUEST['duration']),
-    $_FILES['audio']["size"]
+    $_FILES['audio']["size"],
+    intval($_REQUEST["event"])
     )
     ) die("Selhalo uložení do db");
     redir("user?action=ok");
@@ -109,8 +112,11 @@ function showPosts(){
   rHead();
 
   $posts=getPosts(loggedUser());
-  $topics=getTopics();
-  echo '<ol>';
+  $events=getEvents();
+  foreach ($events as $event){
+  echo "<h2>".$event["name"]."</h2>";
+  $topics=getTopics(true,$event["id"]);
+  echo '<ul>';
     foreach ($topics as $Key=>$Value){
     $fnd=false;
     foreach($posts as $pid=>$pda){
@@ -119,17 +125,20 @@ function showPosts(){
           $fnd=true;
       }
     }
-    if(!$fnd) echo '<li><a href="user?action=add&topic='.$Key. '">'.$Value."</a></li>";
+    if(!$fnd) echo '<li><a href="user?action=add&event='.$event["id"].'&topic='.$Key. '">'.$Value."</a></li>";
   }
-  echo "</ol>";
+  echo "</ul>";
+  }
 
-  echo "<hr>Komplet <ol>";
+/*  echo "<hr>Komplet <ol>";
   foreach(getTopics(false) as $topic){
       echo '<li>'.$topic.'</li>';
   }
   echo "</ol>";
+  */
   rFoot();
 }
+
 function showAddScreen(){
   if(!loggedUser())die ("To nedává smysl");
   if(!isset($_REQUEST['topic'])) die("Takhle to nefunguje");
@@ -141,7 +150,7 @@ function showAddScreen(){
                   <input type="text" name="name" >
               </div>
               <div >
-                  <label>Délka (myslím že stačí zhruba)</label>
+                  <label>Délka (myslím že stačí zhruba, je povinnou součástí formátu pro podcast)</label>
                   <input type="text" name="duration"  value="5:55">
               </div>
               <div>
@@ -153,6 +162,7 @@ function showAddScreen(){
               </div>
                   <input type="hidden"  name=action value="do_add">
                   <input type="hidden"  name=topic value="<?php echo intval($_REQUEST['topic']); ?>">
+                  <input type="hidden"  name=event value="<?php echo intval($_REQUEST['event']); ?>">
           </form>
           <p> Snažte se velikost souboru držet kolem 2-3 MB, kapacita disků na hostingu není nekonečná.
             Na Androidu mi třeba dobrý možnosti (např. stereo většinou nemá smysl) nabízí <a href="https://play.google.com/store/apps/details?id=com.dimowner.audiorecorder">tahle appka</a> </p>
