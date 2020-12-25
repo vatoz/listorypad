@@ -28,7 +28,9 @@ header("Content-type: text/html");
 <?php
 $posts=getPosts();
 foreach (getEvents() as $event_id => $event){
-  echo "<center><h2>".$event["name"]."</h2></center>"; ?>
+  echo "<center><h2>".$event["name"]."</h2></center>";
+  echo "<center><p>".$event["description"]."</p></center>";
+   ?>
 
   <center><table><tr><td>&nbsp;</td><?php
     $users=getUsers($event_id);
