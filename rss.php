@@ -11,9 +11,9 @@ header("Content-Type: text/xml; charset=UTF-8");
 <description>Řada tvůrců každý den či týden bere nové téma, novou výzvu. A pak vypráví příběh.</description>
 <itunes:summary>Řada tvůrců každý den či týden bere nové téma, novou výzvu. A pak vypráví příběh.</itunes:summary>
 <itunes:category text="Performing Arts"/>
-<image href="https://listorypad.eu/static/logo.png"/>
-<itunes:image href="https://listorypad.eu/static/logo.png"/>
-<googleplay:image href="https://listorypad.eu/static/logo.png"/>
+<image href="https://listorypad.eu/static/logo.png?v2"/>
+<itunes:image href="https://listorypad.eu/static/logo.png?v2"/>
+<googleplay:image href="https://listorypad.eu/static/logo.png?v2"/>
 <itunes:keywords>Listorypad, storytelling</itunes:keywords>
 <itunes:author>Listorypad.eu a jednotliví autoři</itunes:author>
 <googleplay:author>Listorypad.eu a jednotliví autoři</googleplay:author>
