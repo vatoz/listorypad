@@ -14,7 +14,9 @@ header("Content-type: text/html");
 <body>
 
   <center><h1>Listorypad</h1></center>
-  <center><p>Performeři vypráví příběhy na zadané téma. Poslechnout si je můžeš tady na stránkách, nebo v rámci <a href="/rss">podcastu</a> či <a href="https://open.spotify.com/show/7wCAQtwvArHuVPekQYqqRT">Spotify</a>. </p></center>
+  <center><p>Performeři vypráví příběhy na zadané téma. Poslechnout si je můžeš tady na stránkách, nebo v rámci <a href="/rss">podcastu</a> či <a href="https://open.spotify.com/show/7wCAQtwvArHuVPekQYqqRT">Spotify</a>.
+ Kamarádit se s námi můžeš i na <a href="https://facebook.com/listorypad"> Facebooku</a>u.
+  </p></center>
   <center>
   <?php
   foreach(getEditorials() as $editorial){
