@@ -41,7 +41,7 @@ function Render($Title,$Description,$Duration,$Date, $Url,$Filesize,$Author, $Mi
   echo $k->format(DateTime::RFC822);
   echo '</pubDate>'."\n";
   echo '<enclosure url="https://listorypad.vasekcerny.cz/'.$Url.'" type="'.$Mimetype.'" length="'.$Filesize.'"/>'."\n";
-  echo '<guid isPermaLink="false">https:/listorypad.eu/#'.$Url.'</guid>'."\n";
+  echo '<guid isPermaLink="false">https:/listorypad.vasekcerny.cz/#'.$Url.'</guid>'."\n";
   echo '<link>https:/listorypad.eu/#'.$Url.'</link>'."\n";
   echo '<author>'.xmlescape($Author).'</author>'."\n";
   if(strlen($Keywords)){
