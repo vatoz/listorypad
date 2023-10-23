@@ -1,7 +1,7 @@
 RewriteEngine on
 
 RewriteCond %{HTTP_HOST} ^listorypad\.eu [NC]
-RewriteRule (.*) http://listorypad.vasekcerny.cz/$1 [R=301,QSA,L]
+RewriteRule (.*) https://listorypad.vasekcerny.cz/index.php?url=$1 [R=301,QSA,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d  
