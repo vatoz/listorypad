@@ -8,15 +8,15 @@ header("Content-Type: text/xml; charset=UTF-8");
 <copyright>Jednotliví autoři 2020-2021</copyright>
 <link>https://listorypad.vasekcerny.cz</link>
 <ttl>3600</ttl>
-<description>Řada tvůrců každý den či týden bere nové téma, novou výzvu. A pak vypráví příběh.</description>
+<description>Řada tvůrců každý den či týden bere nové téma, novou výzvu. A pak vypráví příběh. </description>
 <itunes:summary>Řada tvůrců každý den či týden bere nové téma, novou výzvu. A pak vypráví příběh.</itunes:summary>
 <itunes:category text="Performing Arts"/>
 <image href="https://listorypad.vasekcerny.cz/static/logo.png?v2"/>
 <itunes:image href="https://listorypad.vasekcerny.cz/static/logo.png?v2"/>
 <googleplay:image href="https://listorypad.vasekcerny.cz/static/logo.png?v2"/>
 <itunes:keywords>Listorypad, storytelling</itunes:keywords>
-<itunes:author>Listorypad.eu a jednotliví autoři</itunes:author>
-<googleplay:author>Listorypad.eu a jednotliví autoři</googleplay:author>
+<itunes:author>Listorypad jednotliví autoři</itunes:author>
+<googleplay:author>Listorypad a jednotliví autoři</googleplay:author>
 <itunes:explicit>No</itunes:explicit>
 <itunes:owner>
 <itunes:email>vasek@vasekcerny.cz</itunes:email>
@@ -42,7 +42,7 @@ function Render($Title,$Description,$Duration,$Date, $Url,$Filesize,$Author, $Mi
   echo '</pubDate>'."\n";
   echo '<enclosure url="https://listorypad.vasekcerny.cz/'.$Url.'" type="'.$Mimetype.'" length="'.$Filesize.'"/>'."\n";
   echo '<guid isPermaLink="false">https:/listorypad.vasekcerny.cz/#'.$Url.'</guid>'."\n";
-  echo '<link>https:/listorypad.eu/#'.$Url.'</link>'."\n";
+  echo '<link>https:/listorypad.vasekcerny.cz/#'.$Url.'</link>'."\n";
   echo '<author>'.xmlescape($Author).'</author>'."\n";
   if(strlen($Keywords)){
       echo '<itunes:keywords>'.$Keywords.'</itunes:keywords>'."\n";
@@ -77,7 +77,7 @@ foreach(getEditorials() as $post){
   $post['moment'],
   $post['url'],
   $post['filesize'],
-  "listorypad.eu",
+  "listorypad.vasekcerny.cz",
   $post['mimetype'],
   ""
 );
